@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS departmentDB;
-CREATE DATABASE departmentDB;
-USE departmentDB;
+DROP DATABASE IF EXISTS employeeDB;
+CREATE DATABASE employeeDB;
+USE employeeDB;
 
-CREATE TABLE departmentDB (
+CREATE TABLE department (
 id INT PRIMARY KEY,
 name VARCHAR(30)
 );
@@ -14,7 +14,7 @@ name VARCHAR(30)
 -- CREATE DATABASE roleDB;
 -- USE roleDB;
 
-CREATE TABLE roleDB (
+CREATE TABLE roles (
 id INT PRIMARY KEY,
 title VARCHAR(30),
 salary DECIMAL ,
@@ -27,7 +27,7 @@ department_id INT
 -- CREATE DATABASE employeeDB;
 -- USE employeeDB;
 
-CREATE TABLE employeeDB (
+CREATE TABLE employees (
     id INT PRIMARY KEY,
     first_name VARCHAR(30),
     last_name VARCHAR(30),

@@ -6,7 +6,7 @@ const connection = mysql.createConnection({
     port: 3306,
     user: 'root',
     password: 'password',
-    database: 'departmentDB'
+    database: 'employeeDB'
 });
 
 connection.connect((err) => {
@@ -32,25 +32,44 @@ const initChoice = () => {
     }).then((response) => {
 
         switch(response.choice) {
+            case "View All Employees":
+                viewEmployees();
+                break;
+            case "View All Employees by Department":
+                viewEmployeesByDep();
+                break;
+            
+            case "View All Employees by Manager":
+                viewEmployeesByMan();
+                break;
 
+            case "Add Employee":
+                addEmployee();
+                break;
 
+            case "Remove Employee":
+                removeEmployee();
+                break;
+            
+            case "Update Employee Role":
+                updateEmployeeRole();
+                break;
 
+            case "Update Employee Manager":
+                updateEmployeeMan();
+                break;
 
-
-
-
+            case "View All Roles":
+                viewAllRoles();
+                break;
         }
-
-
-
-    })
-
-
+    });
 }
 
 
 const viewEmployees = () => {
-
+    const query = 'SELECT * FROM employees';
+    connection.query(query, {})
 
 
 }
