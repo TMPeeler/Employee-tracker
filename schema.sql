@@ -14,7 +14,7 @@ name VARCHAR(30)
 -- CREATE DATABASE roleDB;
 -- USE roleDB;
 
-CREATE TABLE roles (
+CREATE TABLE role (
 id INT PRIMARY KEY,
 title VARCHAR(30),
 salary DECIMAL ,
@@ -27,7 +27,7 @@ department_id INT
 -- CREATE DATABASE employeeDB;
 -- USE employeeDB;
 
-CREATE TABLE employees (
+CREATE TABLE employee (
     id INT PRIMARY KEY,
     first_name VARCHAR(30),
     last_name VARCHAR(30),
