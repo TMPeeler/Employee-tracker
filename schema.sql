@@ -3,35 +3,24 @@ CREATE DATABASE employeeDB;
 USE employeeDB;
 
 CREATE TABLE department (
-id INT PRIMARY KEY,
-name VARCHAR(30)
+id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+name VARCHAR(30) NOT NULL
 );
--- SELECT * FROM departmentDB;
 
-
-
--- DROP DATABASE IF EXISTS roleDB;
--- CREATE DATABASE roleDB;
--- USE roleDB;
 
 CREATE TABLE role (
-id INT PRIMARY KEY,
-title VARCHAR(30),
-salary DECIMAL ,
-department_id INT
+id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+title VARCHAR(30) NOT NULL,
+salary DECIMAL(9, 2) NOT NULL,
+department_id INT NOT NULL,
+FOREIGN KEY (department_id) REFERENCES department(id)
 );
--- SELECT * FROM roleDB;
-
-
--- DROP DATABASE IF EXISTS employeeDB;
--- CREATE DATABASE employeeDB;
--- USE employeeDB;
 
 CREATE TABLE employee (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     first_name VARCHAR(30),
     last_name VARCHAR(30),
     role_id INT,
-    manager_id INT 
+    -- manager_id INT REFERENCES employee(id), idk if I need this if I'm not doing the bonus but I thought about it
+    FOREIGN KEY (role_id) REFERENCES role(id)
 );
--- SELECT * FROM employeeDB;
