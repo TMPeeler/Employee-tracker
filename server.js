@@ -73,6 +73,7 @@ const viewEmployees = () => {
     const query = 'SELECT * FROM employees';
     connection.query(query, (err, res) => {
         console.table(res);
+        if (err) throw err;
     });
     initChoice();
 }
@@ -82,6 +83,7 @@ const viewAllRoles = () => {
     const query = 'SELECT * FROM role';
     connection.query(query, (err, res) => {
         console.table(res);
+        if (err) throw err;
     });
     initChoice();
 }
@@ -90,6 +92,7 @@ const viewAllDepartments = () => {
     const query = 'SELECT * FROM department';
     connection.query(query, (err, res) => {
         console.table(res);
+        if (err) throw err;
     });
     initChoice();
 }
@@ -97,10 +100,41 @@ const viewAllDepartments = () => {
 
 const addEmployee = () => {
     // prompt user for firstname, lastname, role_id? then insert into employee table
-    const query = "INSERT INTO employee VALUES";
-    connection.query(query, (err, res) => {
-        console.table(res);
+    
+    const roleQuery = 'SELECT title FROM role';
+    connection.query(roleQuery, (err, res) => {
+        const role = [];
+        role.push(res);
+        if (err) throw err;
+    
+    inquirer.prompt(
+    {
+        name: "firstname",
+        type: 'input',
+        message: "Please enter the first name of your new employee:",
+    },
+    {
+        name: "lastname",
+        type: 'input',
+        message: "Please enter the last name of your new employee:",
+    },
+    {
+        name: "role_id",
+        type: 'list',
+        message: "Please enter the role id of your new employee:",
+        choices: role
+    },
+    // is this supposed to generate a list of choices from data in the database? I'm not sure this is the correct way to do it
+    ).then((response) => {
+        const query = "INSERT INTO employee SET ?";
+        connection.query(query, response, (err, res) => {
+            console.table(res);
+            if (err) throw err;
+        });
     });
+    //how to insert into the table correctly?
+    
+});
     initChoice();
 }
 
