@@ -60,7 +60,7 @@ const initChoice = () => {
             case "Update Employee Role":
                 updateEmployeeRole();
                 break;
-                
+
             case "Exit":
                 connection.end();
                 break;
@@ -96,7 +96,7 @@ const viewAllDepartments = () => {
 //add employees, roles, departments
 
 const addEmployee = () => {
-    // I'm not sure how to take the users inputs yet and insert them as values but im assuming it's something like user input is equal to a variable that then gets thrown into the query as a template literal
+    // prompt user for firstname, lastname, role_id? then insert into employee table
     const query = "INSERT INTO employee VALUES";
     connection.query(query, (err, res) => {
         console.table(res);
@@ -105,7 +105,7 @@ const addEmployee = () => {
 }
 
 const addRole = () => {
-    // 
+    // prompt user for new role title and salary, (maybe ask for ID or have it come up with a new ID automatically I'm not sure) then insert into the role table
     const query = "INSERT INTO role VALUES";
     connection.query(query, (err, res) => {
         console.table(res);
@@ -114,7 +114,7 @@ const addRole = () => {
 }
 
 const addDepartment = () => {
-    // 
+    // prompt user for new department name, insert into department table
     const query = "INSERT INTO department VALUES";
     connection.query(query, (err, res) => {
         console.table(res);
@@ -123,7 +123,7 @@ const addDepartment = () => {
 }
 
 const updateEmployeeRole = () => {
-// i have no idea how to do this one
+// prompt user for a particular employee, then allow them to pick from a list of current roles from database, then attach new role to selected employee (might be tricky) p.s. (maybe delete employee and then reInsert with new values?)
 
     
 }
